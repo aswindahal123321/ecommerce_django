@@ -1,0 +1,36 @@
+{% extends 'shop/base.html' %}
+{% block title %}
+  Search Page
+{% endblock %}
+
+{% block body %}
+  {% if query %}
+    <div class="container">
+      <div class="row">
+        {% for item in allItems %}
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <img class="product-img object-fit-cover" src="{{ item.image.url }}" class="card-img-top" alt="" height="200" />
+            <div class="card-body">
+              <a href="/shop/product-view/{{ item.product_id }}"><h5 id="titleproduct_{{ item.product_id }}" class="card-title fw-bold fs-4 text-dark">{{ item.product_name }}</h5></a>
+              <p class="card-text">{{ item.product_desc|truncatechars:30 }}</p>
+              <div>
+                <p class="fw-bold">
+                  <span class="mt-3">Rs. {{ item.price }}</span><span><button onclick="addToCart(event)" id="product_{{ item.product_id }}" class="btn btn-primary cart ms-3">Add to Cart</button></span>
+                </p>
+              </div>
+              <div class="homepage-quantity">
+                <select class="d-none"  class="btn border p-2 pe-3 ps-3" id="quantity"  aria-label="Default select example">
+                  <option value="1">1</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:2 %}
+      </div><div class="row">
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </div>
+{% endblock %}

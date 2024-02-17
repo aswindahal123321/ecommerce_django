@@ -1,0 +1,32 @@
+{% extends 'shop/base.html' %}
+{% block title %}
+  Contact Page
+{% endblock %}
+{% block body %}
+  <div class="container pt-5 pb-5">
+    <div class="row g-3">
+      <div class="col">
+        <img src="{{ media_root }}shop/images/laptop.png" alt="" />
+        <h3>Contact Us</h3>
+        <p class="col-lg-8 fs-5 text-muted">
+          This is a custom jumbotron featuring an SVG image at the top, some longer text that wraps early thanks to a responsive <code>.col-*</code> class, and a customized call to action.
+        </p>
+      </div>
+      <div class="col">
+        <form class="border p-3 bg-dark text-light rounded" method="POST" action="">
+            {% csrf_token %}
+          <div class="mb-3">
+            <label for="email" class="form-label">Your Email Address</label>
+            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Have some Queries? Send some.</label>
+            <input type="text" name="message" class="form-control" id="message" />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Message</button>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

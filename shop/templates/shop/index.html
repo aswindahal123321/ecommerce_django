@@ -1,0 +1,38 @@
+{% extends 'shop/base.html' %}
+{% block title %}
+  Home Page
+{% endblock %}
+{% block body %}
+  <div class="container product-slider">
+    {% for item in all_products %}
+      <h2 class="pt-3 pb-3 text-uppercase">{{ item.category }}</h2>
+      <div class="owl-carousel owl-theme owl-loaded owl-carousel-section pt-3">
+        <div class="owl-stage-outer">
+          <div class="owl-stage">
+            {% for product in item.products %}
+              <div class="owl-item product-card">
+                <div class="card" style="width: 18rem;">
+                  <img class="product-img" src="{{ product.image.url }}" class="card-img-top" alt="" />
+                  <div class="card-body">
+                    <a href="/shop/product-view/{{ product.product_id }}"><h5 id="titleproduct_{{product.product_id}}" class="card-title fw-bold fs-4 text-dark">{{ product.product_name }}</h5></a>
+                    <p class="card-text">{{ product.product_desc|truncatechars:30 }}</p>
+                    <div>
+                      <p class="fw-bold">
+                        <span class="mt-3">Rs. {{ product.price }}</span><span><button onclick="addToCart(event)" id="product_{{ product.product_id }}" class="btn btn-primary cart ms-3">Add to Cart</button></span>
+                      </p>
+                    </div>
+                    <div class="homepage-quantity">
+                      <select class="btn border p-2 pe-3 ps-3" id="quantity" class="" aria-label="Default select example">
+                        <option value="1">1</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

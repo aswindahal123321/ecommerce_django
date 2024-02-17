@@ -1,0 +1,42 @@
+:root{
+    --color1 : #555;
+}
+
+.homepage-quantity{
+    display: none;
+}
+.popover{
+    position: absolute;
+    top: 10px !important;
+    right: 200px;
+}
+img.product-img {
+    height: 200px;
+    width: 400px;
+    object-fit: cover;
+    background-color: var(--color1);
+}
+
+.product-slider h5 {
+    line-height: 1.5;
+}
+
+.card {
+    min-height: 450px;
+}
+
+.customNextBtn, .customPrevBtn {
+    background-color: var(--color1);
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+
+.main-slider {
+    height: 400px; /* Adjust the height as needed */
+}
+.carousel-item{
+    display: block;
+}
